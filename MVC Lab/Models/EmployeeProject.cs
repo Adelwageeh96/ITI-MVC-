@@ -1,0 +1,11 @@
+﻿namespace MVC_Lab.Models
+{
+    public class EmployeeProject
+    {
+        public int EmployeeId { get; set; }
+        public Employee Employee { get; set; }
+        public int ProjectId { get; set; }
+        public Project Project { get; set; }
+        public int WorkingHours { get; set; }
+    }
+}
