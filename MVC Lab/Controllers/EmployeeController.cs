@@ -19,6 +19,7 @@ namespace MVC_Lab.Controllers
             return View(_context.employees.Select(e=>
                new EmployeeViewModel
                {
+                   Id = e.Id,
                    Name = e.Name,
                    Salary = e.Salary,
                    Email = e.Email,
@@ -66,6 +67,49 @@ namespace MVC_Lab.Controllers
                 OfficeId = model.OfficeId
             });
             _context.SaveChanges();
+            return RedirectToAction("GetAll");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Employee employee = _context.employees.Find(id);
+            return View(new EmployeeViewModel
+            {
+                Id = id,
+                Name = employee.Name,
+                Salary = employee.Salary,
+                Address = employee.Address,
+                Age = employee.Age,
+                Email = employee.Email,
+                OfficeId = employee.OfficeId
+            });
+
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, EmployeeViewModel model)
+        {
+            Employee employee = _context.employees.Find(id);
+            employee.Address = model.Address;
+            employee.Salary = model.Salary;
+            employee.Email = model.Email;
+            employee.Age = model.Age;
+            employee.OfficeId = model.OfficeId;
+            employee.Name = model.Name;
+            
+
+            _context.SaveChanges();
+            return RedirectToAction("GetAll");
+        }
+        
+        public IActionResult Delete(int id)
+        {
+            Employee employee = _context.employees.Find(id);
+            if (employee != null)
+            {
+                _context.employees.Remove(employee);
+                _context.SaveChanges();
+            }
             return RedirectToAction("GetAll");
         }
     }
