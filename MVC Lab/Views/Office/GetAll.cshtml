@@ -1,0 +1,30 @@
+﻿@model IEnumerable<OfficeViewModel>
+
+<h2>Employee List</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var office in Model)
+            {
+                <tr>
+                    <td>@office.Name</td>
+                    <td>@office.Location</td>
+                    <td>
+                        <a href="/Office/Add" class="btn btn-success">Add</a>
+                        <a href="/Office/Edit/@office.Id" class="btn btn-primary">Edit</a>
+                        <a href="/Office/Delete/@office.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

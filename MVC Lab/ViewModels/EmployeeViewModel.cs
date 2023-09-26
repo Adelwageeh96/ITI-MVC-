@@ -1,4 +1,4 @@
-﻿namespace MVC_Lab.ModelViews
+﻿namespace MVC_Lab.ViewModels
 {
     public class EmployeeViewModel
     {

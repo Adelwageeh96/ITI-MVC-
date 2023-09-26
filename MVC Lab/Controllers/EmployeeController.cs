@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC_Lab.Data;
 using MVC_Lab.Models;
-using MVC_Lab.ModelViews;
+using MVC_Lab.ViewModels;
 
 namespace MVC_Lab.Controllers
 {

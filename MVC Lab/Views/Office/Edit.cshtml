@@ -1,0 +1,18 @@
+﻿@model OfficeViewModel
+<h2>Edit Employee</h2>
+
+<form method="post" action="/Office/Edit">
+    <input type="hidden" id="Id" name="Id" value="@Model.Id">
+
+    <div class="form-group">
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="Location">Location:</label>
+        <input type="text" id="Location" name="Location" class="form-control" value="@Model.Location" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Edit Employee</button>
+</form>
