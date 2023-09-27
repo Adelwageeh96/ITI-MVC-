@@ -1,4 +1,6 @@
-﻿namespace MVC_Lab.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MVC_Lab.Models
 {
     public class Employee
     {

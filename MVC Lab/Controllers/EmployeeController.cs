@@ -56,18 +56,22 @@ namespace MVC_Lab.Controllers
         [HttpPost]
         public IActionResult Add(EmployeeViewModel model)
         {
-            _context.Add(new Employee
+            if (ModelState.IsValid)
             {
-                Name = model.Name,
-                Salary = model.Salary,
-                Address = model.Address,
-                Age = model.Age,
-                Email = model.Email,
-                Password = model.Password,
-                OfficeId = model.OfficeId
-            });
-            _context.SaveChanges();
-            return RedirectToAction("GetAll");
+                _context.Add(new Employee
+                {
+                    Name = model.Name,
+                    Salary = model.Salary,
+                    Address = model.Address,
+                    Age = model.Age,
+                    Email = model.Email,
+                    Password = model.Password,
+                    OfficeId = model.OfficeId
+                });
+                _context.SaveChanges();
+                return RedirectToAction("GetAll");
+            }
+            return View(model);
         }
 
         public IActionResult Edit(int id)
@@ -89,17 +93,20 @@ namespace MVC_Lab.Controllers
         [HttpPost]
         public IActionResult Edit(int id, EmployeeViewModel model)
         {
-            Employee employee = _context.employees.Find(id);
-            employee.Address = model.Address;
-            employee.Salary = model.Salary;
-            employee.Email = model.Email;
-            employee.Age = model.Age;
-            employee.OfficeId = model.OfficeId;
-            employee.Name = model.Name;
-            
+            if(ModelState.IsValid)
+            {
+                Employee employee = _context.employees.Find(id);
+                employee.Address = model.Address;
+                employee.Salary = model.Salary;
+                employee.Email = model.Email;
+                employee.Age = model.Age;
+                employee.OfficeId = model.OfficeId;
+                employee.Name = model.Name;
+                _context.SaveChanges();
+                return RedirectToAction("GetAll");
+            }
+            return View(model);
 
-            _context.SaveChanges();
-            return RedirectToAction("GetAll");
         }
         
         public IActionResult Delete(int id)
